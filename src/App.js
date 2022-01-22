@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Discounts from "./components/Discounts";
 import Button from "./components/Button";
+import Alert from "./components/Alert";
 
 const data = [
   {
@@ -29,6 +30,7 @@ const data = [
 ];
 function App() {
   const [discounts, setDiscounts] = useState(data);
+  const [isClicked, setIsClicked] = useState(false);
   // select items func
   const onSelect = (e) => {
     const { name, checked } = e.target;
@@ -43,16 +45,30 @@ function App() {
       );
 
       setDiscounts(tempItems);
+      
     }
   };
+  const CheckedItems = discounts.filter((item) => item.isChecked );
+ 
+  
+  // show alret popup
+  const onClickRemove = () => {
+    setIsClicked(true);
+  };
+  
   // delete items func
-  const deleteItems = (e) => {
-    e.preventDefault();
+  const deleteItems = () => {
+    
     const unCheckedItems = discounts.filter((item) => {
       return !item.isChecked;
     });
+    
 
     setDiscounts(unCheckedItems);
+    setIsClicked(false);
+  };
+  const cancleHandler = () => {
+    setIsClicked(false);
   };
   return (
     <div className="App">
@@ -64,9 +80,17 @@ function App() {
           setDiscounts={setDiscounts}
         />
         {discounts.find((item) => item.isChecked) ? (
-          <Button value="Remove" onClickHandle={deleteItems} />
+          <Button value="Remove" onClickHandle={onClickRemove} />
         ) : (
           ""
+        )}
+        { 
+        isClicked && (
+          <Alert
+            alertText={`Are you sure you want to delete ${CheckedItems.map(item => {return item.campaign})} `}
+            okHandler={deleteItems}
+            cancleHandler={cancleHandler}
+          ></Alert>
         )}
       </div>
     </div>

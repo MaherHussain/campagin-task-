@@ -1,9 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
+
 
 export default function Button({ value,onClickHandle }) {
+  
+
   return (
     <div className="button-con">
       <button onClick={onClickHandle}>{value}</button>
+      
     </div>
   );
 }
