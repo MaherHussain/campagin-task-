@@ -8,21 +8,21 @@ import Alert from "./components/Alert";
 const data = [
   {
     id: 1,
-    campaign: "Summer Sale ",
+    campaign: "Summer Sale",
     promotion: "10 % of product",
     details: "10-off",
     discount: 118,
   },
   {
     id: 2,
-    campaign: "Summer Sale ",
+    campaign: "Summer Sale",
     promotion: "5 % of product",
     details: "5-off",
     discount: 118,
   },
   {
     id: 3,
-    campaign: "Summer Sale ",
+    campaign: "Summer Sale",
     promotion: "3 % of product",
     details: "3-off",
     discount: 118,
@@ -50,7 +50,7 @@ function App() {
   };
   const CheckedItems = discounts.filter((item) => item.isChecked );
  
-  
+ 
   // show alret popup
   const onClickRemove = () => {
     setIsClicked(true);
@@ -62,12 +62,16 @@ function App() {
     const unCheckedItems = discounts.filter((item) => {
       return !item.isChecked;
     });
+    // her we should send delete request  
+    if(unCheckedItems.length > 0) {
+      
+      setDiscounts(unCheckedItems);
+      setIsClicked(false);
+      console.log("you items are deleted ")
+    }
     
-
-    setDiscounts(unCheckedItems);
-    setIsClicked(false);
   };
-  const cancleHandler = () => {
+  const cancelHandler = () => {
     setIsClicked(false);
   };
   return (
@@ -80,16 +84,16 @@ function App() {
           setDiscounts={setDiscounts}
         />
         {discounts.find((item) => item.isChecked) ? (
-          <Button value="Remove" onClickHandle={onClickRemove} />
+          <Button  value="Remove" onClickHandle={onClickRemove} />
         ) : (
           ""
         )}
         { 
         isClicked && (
           <Alert
-            alertText={`Are you sure you want to delete ${CheckedItems.map(item => {return item.campaign})} ?  `}
+            alertText={`Are you sure you want to delete ${CheckedItems.map(item => {return item.campaign}).join(', ')} ?  `}
             okHandler={deleteItems}
-            cancleHandler={cancleHandler}
+            cancleHandler={cancelHandler}
           ></Alert>
         )}
       </div>
