@@ -18,10 +18,13 @@
 } 
 thead tr {
   border-bottom:hidden;
+  text-align: center !important;
 }
 tbody{
   font-size: 15px;
+  text-align: center !important;
 }
+
 
 input[type=checkbox] {
   filter:  hue-rotate(30deg) brightness(1.5);
@@ -40,6 +43,7 @@ input[type=checkbox] {
  display:flex;
  justify-content:center;
 }
+
 button {
   margin: 0 auto;
 align-self: center ;

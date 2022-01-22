@@ -1,9 +1,8 @@
-import './App.css';
-import React,{useState, useEffect} from 'react'
-import Header from './components/Header'
-import Discounts from './components/Discounts'
-import Button from './components/Button'
-
+import "./App.css";
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Discounts from "./components/Discounts";
+import Button from "./components/Button";
 
 const data = [
   {
@@ -30,7 +29,7 @@ const data = [
 ];
 function App() {
   const [discounts, setDiscounts] = useState(data);
-// select items func
+  // select items func
   const onSelect = (e) => {
     const { name, checked } = e.target;
     if (name === "selectall") {
@@ -42,26 +41,34 @@ function App() {
       let tempItems = discounts.map((item) =>
         item.id.toString() === name ? { ...item, isChecked: checked } : item
       );
-      
+
       setDiscounts(tempItems);
     }
   };
   // delete items func
-const deleteItems = (e) => {
-  e.preventDefault();
-  const unCheckedItems = discounts.filter((item) => { return !item.isChecked}  )
-  console.log(unCheckedItems);
-  setDiscounts(unCheckedItems)
+  const deleteItems = (e) => {
+    e.preventDefault();
+    const unCheckedItems = discounts.filter((item) => {
+      return !item.isChecked;
+    });
 
-}
+    setDiscounts(unCheckedItems);
+  };
   return (
     <div className="App">
       <div className="container-fluid pt-5">
-      <Header title="Discounts"/>
-      <Discounts discounts={discounts} onSelect={onSelect} setDiscounts={setDiscounts}/>
-      {discounts.find(item => item.isChecked  ) ? (<Button value="Remove" onClickHandle={deleteItems}/>):("")}
+        <Header title="Discounts" />
+        <Discounts
+          discounts={discounts}
+          onSelect={onSelect}
+          setDiscounts={setDiscounts}
+        />
+        {discounts.find((item) => item.isChecked) ? (
+          <Button value="Remove" onClickHandle={deleteItems} />
+        ) : (
+          ""
+        )}
       </div>
-
     </div>
   );
 }

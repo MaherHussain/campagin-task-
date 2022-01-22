@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function Discounts({discounts,setDiscounts,onSelect}) {
  
@@ -9,6 +9,7 @@ export default function Discounts({discounts,setDiscounts,onSelect}) {
         <thead className="table-head">
           <tr>
             <th scope="col" className="table-head">
+              {discounts.length > 0 ? (
               <input
                 name="selectall"
                 type="checkbox"
@@ -16,7 +17,8 @@ export default function Discounts({discounts,setDiscounts,onSelect}) {
                 onChange={(e) => {
                   onSelect(e);
                 }}
-              />
+              />):("")  }
+             
             </th>
             <th scope="col" className="table-head">
               Campaign
@@ -35,7 +37,7 @@ export default function Discounts({discounts,setDiscounts,onSelect}) {
         <tbody>
           {discounts.map((item) => {
             return (
-              <tr key={item.id}>
+              <tr key={item.id} >
                 <th scope="row">
                   <input
                     onChange={(e) => {
@@ -46,7 +48,7 @@ export default function Discounts({discounts,setDiscounts,onSelect}) {
                     checked={item?.isChecked || false}
                   />
                 </th>
-                <td>{item.campaign}</td>
+                <td >{item.campaign}</td>
                 <td>{item.promotion}</td>
                 <td>{item.details}</td>
                 <td>{item.discount} kr</td>
