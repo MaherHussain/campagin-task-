@@ -84,7 +84,7 @@ function App() {
           setDiscounts={setDiscounts}
         />
         {discounts.find((item) => item.isChecked) ? (
-          <Button  value="Remove" onClickHandle={onClickRemove} />
+          <Button  label="Remove" onClickHandle={onClickRemove} />
         ) : (
           ""
         )}

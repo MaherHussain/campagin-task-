@@ -1,12 +1,12 @@
 import React from "react";
 
 
-export default function Button({ value,onClickHandle }) {
+export default function Button({ label,onClickHandle }) {
   
 
   return (
     <div className="button-con">
-      <button onClick={onClickHandle}>{value}</button>
+      <button onClick={onClickHandle}>{label}</button>
       
     </div>
   );
