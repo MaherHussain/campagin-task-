@@ -87,7 +87,7 @@ function App() {
         { 
         isClicked && (
           <Alert
-            alertText={`Are you sure you want to delete ${CheckedItems.map(item => {return item.campaign})} `}
+            alertText={`Are you sure you want to delete ${CheckedItems.map(item => {return item.campaign})} ?  `}
             okHandler={deleteItems}
             cancleHandler={cancleHandler}
           ></Alert>
