@@ -4,6 +4,7 @@
  - custom checkbox and render custom remove button when one or more campaign is checked.
  - adding alert box when remove button is clicked to confirm the removing. 
  - complete the deletion when is clicked ok on the alert box then returns a message that the items are removed.
- - i have used also bootstarp. 
+ -  bootstarp is used .
+ - adding as basic unit test to button component.  
  # An extra function added to select all campaign items 
 
